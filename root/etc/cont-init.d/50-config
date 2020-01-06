@@ -43,7 +43,7 @@ fi
 # Configure M/Monit connection
 if [ -n "${MMONIT_URL}" ]; then
     cat > /config/monit.d/mmonit <<EOF
-set monit ${MMONIT_URL}
+set mmonit ${MMONIT_URL}
 EOF
 fi
 
