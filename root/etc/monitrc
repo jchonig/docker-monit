@@ -1,0 +1,11 @@
+
+set daemon  30              # check services at 30 seconds intervals
+set log syslog
+
+# Store our state in /config
+set idfile /config/.monit.id
+set statefile /config/.monit.state
+
+# Include futher configuration
+include /config/monit.d/*
+

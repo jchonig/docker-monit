@@ -1,0 +1,54 @@
+#!/usr/bin/with-contenv bash
+
+print_vars () {
+    if [ -n "${1}" ]; then
+	title=" ${1}"
+    else
+	title=""
+    fi
+    echo "Environment${title}:"
+    echo "    PUID=${PUID}"
+    echo "    PGID=${PGID}"
+    echo "    TZ=${TZ}"
+    for var in "${!MMONIT_@}"; do
+	printf '    %s=%s\n' "$var" "${!var}"
+    done    
+}
+
+print_vars 
+
+# load env file if it exists
+if [ -f "/config/env" ]; then
+  source /config/env
+  print_vars "After sourcing /config/env"
+fi
+
+# make our config dirs
+for dir in monit.d; do
+    mkdir -p /config/${dir}
+done
+
+# Configure http port
+if [ ! -f /config/monit.d/http ]; then
+    # Find our network info
+    eval $(ifconfig eth0 | awk -F'[: ]+' '/inet/{print "NETWORK=" $4 " NETMASK=" $8}')
+
+    cat > /config/monit.d/http <<EOF
+set httpd port 2812
+    allow localhost
+    allow ${NETWORK}/${NETMASK}
+EOF
+fi
+
+# Configure M/Monit connection
+if [ -n "${MMONIT_URL}" ]; then
+    cat > /config/monit.d/mmonit <<EOF
+set monit ${MMONIT_URL}
+EOF
+fi
+
+# XXX - Cron, logrotate
+
+# permissions
+chown -R abc:abc \
+	/config

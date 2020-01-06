@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+# Run monit
+/usr/bin/monit -I -c /etc/monitrc
+
