@@ -69,7 +69,16 @@ XXX - Security
 
 # Application Setup
 
-XXX - Write me
+  * Environment variables can also be passed in a file named `env` in
+    the `config` directory. This file is sourced by the shell.
+  * Monit configuration is assembled from config files found in
+    `config/monit.d`.
+  * If it does not exist, `config/monit.d/http` is used created to
+    specify the port Monit listens on.
+  * If `MMONIT_URL` is passed in the environment,
+    `config/monit.d/mmonit` is created using this variable as the
+    parameter to a `set mmonit` directive.
+
 ## Local port
 
 If the file `config/monit.d/http` is not present on startup, this file
@@ -94,7 +103,6 @@ set monit ${MMONIT_URL}
 
 ## TODO
 
-  * [ ] Document variables
   * [ ] Document configuration
 
 
