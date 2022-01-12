@@ -24,7 +24,7 @@ if [ -f "/config/env" ]; then
 fi
 
 # make our config dirs
-for dir in monit.d; do
+for dir in logs monit.d; do
     mkdir -p /config/${dir}
 done
 
