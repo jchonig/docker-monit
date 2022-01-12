@@ -5,6 +5,7 @@ set log syslog
 # Store our state in /config
 set idfile /config/.monit.id
 set statefile /config/.monit.state
+set logfile /config/logs/monit.log
 
 # Include futher configuration
 include /config/monit.d/*
