@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.15
+FROM lsiobase/alpine:3.16
 
 ENV \
 	TZ=UTC \
@@ -10,8 +10,7 @@ COPY root /
 # Set up
 RUN \
 echo "*** update packages and install monit ****" && \
-	apk update && \
-	apk add monit && \
+	apk add --no-cache monit && \
 echo "*** set permissions ***" && \
 	chmod 600 /etc/monitrc 
 
