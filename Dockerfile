@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.17
+FROM lsiobase/alpine:3.20
 
 ENV \
 	TZ=UTC \
