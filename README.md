@@ -2,7 +2,7 @@
 A container running [monit](https://mmonit.com/monit/) for the purpose
 of monitoring other containers.
 
-Image hosted at: `ghcr.io/ghcr.io/jchonig/monit`
+Image hosted at: `ghcr.io/jchonig/monit`
 
 # Usage
 
