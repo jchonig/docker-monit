@@ -2,6 +2,8 @@
 A container running [monit](https://mmonit.com/monit/) for the purpose
 of monitoring other containers.
 
+Image hosted at: `ghcr.io/ghcr.io/jchonig/monit`
+
 # Usage
 
 ## docker
@@ -16,7 +18,7 @@ docker create \
   --expose 2812 \
   -v </path/to/appdata/config>:/config \
   --restart unless-stopped \
-  jchonig/monit
+  ghcr.io/jchonig/monit
 ```
 
 ### docker-compose
@@ -28,7 +30,7 @@ Compatible with docker-compose v2 schemas.
 version: "2"
 services:
   monit:
-    image: jchonig/monit
+    image: ghcr.io/jchonig/monit
     container_name: monit
     environment:
       - PUID=1000
